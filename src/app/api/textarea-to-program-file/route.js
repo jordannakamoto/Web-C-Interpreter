@@ -16,27 +16,20 @@ export async function POST(request) {
 
     const text = data.text;
 
-    console.log(text);
+    // console.log(text);
 
-    fs.writeFile(filePath, text, (err) => {
-        if (err){
-            console.error('Error writing to file:', err);
-            return NextResponse.json(
-                { error: "Failed to write file frontend" },
-                { status: 500 }
-                );
-        }
-        return NextResponse.json(
-            {
-                message: "Frontend to program file interface.c written successfully",
-                filePath: filePath,
-            },
-            { status: 200 }
-            );
-    });
-
-    return NextResponse.json(
-      { error: "Failed to write file from frontend" },
-      { status: 500 }
-      );
+    try {
+      fs.writeFileSync(filePath, text);
+      // File write was successful
+      return NextResponse.json({
+          message: "Frontend to program file interface.c written successfully",
+          filePath: filePath,
+      }, { status: 200 });
+  } catch (err) {
+      console.error('Error writing to file:', err);
+      // File write failed
+      return NextResponse.json({
+          error: "Failed to write file from frontend"
+      }, { status: 500 });
+  }
 }

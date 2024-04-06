@@ -14,26 +14,42 @@ export default function Home({ layoutPercentages = [40, 60, 30] }) {
   const [code, setCode] = useState(``);
   const [outputcode, setOutputCode] = useState(``);
 
-  const toInputFile = async () => {
-    try {
-      const response = await fetch('/api/textarea-to-program-file', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: code }),
-      });
-  
+  const runProgram = () => {
+    fetch('/api/textarea-to-program-file', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: code }),
+    })
+    .then(response => {
       if (!response.ok) {
         throw new Error('Error processing files');
       }
-  
-      // Handle response data
-      const result = await response.json();
-      console.log(result);
-    } catch (error) {
-      console.error('Failed to process files:', error);
-    }
+      return response.json();
+    })
+    .then(data => {
+      // console.log('First request successful', data);
+      // Now, make the second fetch call
+      return fetch('/api/run-program', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    })
+    .then(runresponse => {
+      if (!runresponse.ok) {
+        throw new Error('Error running c++ program');
+      }
+    })
+    .then(runData => {
+      // Process the response from running the program
+      console.log('Program run successfully', runData);
+    })
+    .catch(error => {
+      console.error('Failed to run c++ program...', error);
+    });
   };
 
 
@@ -67,7 +83,7 @@ export default function Home({ layoutPercentages = [40, 60, 30] }) {
                   fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
                 }}
               />
-              <Button onClick={toInputFile} style={{position: 'absolute',right: '5px',bottom: '5px'}}>run</Button>
+              <Button onClick={runProgram} style={{position: 'absolute',right: '5px',bottom: '5px'}}>run</Button>
             </Panel>
             <PanelResizeHandle className="border-t" />
             <Panel defaultSize={layoutPercentages[2]} style={{ backgroundColor: "#ededed"}}>
