@@ -124,6 +124,7 @@ export default function RF() {
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
+                panOnScroll={true}
                 nodeTypes={nodeTypes}
             />
         </div>

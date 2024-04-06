@@ -6,12 +6,11 @@ export default function CstTab() {
     const { programOutput } = useProgramOutput(); 
 
     const baseStyle = {
-        padding: '20px'
       };
     return (
         <div style={baseStyle}>
             <ReactFlowGraph />
-            <pre>{programOutput['cstData']}</pre>
+            {/* <pre style={{padding: '35px', fontSize:'12px', borderTop:'solid 1px #ADD8E6'}}>{programOutput['cstData']}</pre> */}
         </div>
     );
 }23

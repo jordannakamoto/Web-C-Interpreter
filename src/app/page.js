@@ -149,19 +149,19 @@ export default function Home({ layoutPercentages = [40, 60, 30] }) {
                   />
             </TabPanel>
             <TabPanel>
-                <pre>{programOutput['tkData']}</pre>
+                <pre style={{padding: '15px', marginBottom: '100px', fontSize:'12px'}}>{programOutput['tkData']}</pre>
             </TabPanel>
             <TabPanel>
               <CstTab/>
             </TabPanel>
             <TabPanel>
-              <pre>{programOutput['stData']}</pre>
+            <pre style={{padding: '15px', marginBottom: '100px', fontSize:'12px'}}>{programOutput['stData']}</pre>
             </TabPanel>
             <TabPanel>
             {/* {programOutput['astData']} */}
             </TabPanel>
             <TabPanel>
-            {/* {programOutput['bnfData']} */}
+                    <pre> </pre>
             </TabPanel>
           </Tabs>
           </Panel>
