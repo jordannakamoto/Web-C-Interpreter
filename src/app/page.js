@@ -6,6 +6,7 @@ import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 
 import AboutTab from '@/TabComponents/About/about-tab'
+import BnfTab from '@/TabComponents/BNF/bnf-tab';
 import { Button } from "@/ShadCN/ui/button"
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import CstTab from '@/TabComponents/CST/cst-tab'
@@ -161,7 +162,7 @@ export default function Home({ layoutPercentages = [40, 60, 30] }) {
             {/* {programOutput['astData']} */}
             </TabPanel>
             <TabPanel>
-                    <pre> </pre>
+                    <BnfTab/>
             </TabPanel>
           </Tabs>
           </Panel>
