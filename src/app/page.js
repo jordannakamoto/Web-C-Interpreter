@@ -8,6 +8,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import AboutTab from '@/TabComponents/About/about-tab'
 import { Button } from "@/ShadCN/ui/button"
 import CodeEditor from '@uiw/react-textarea-code-editor';
+import CstTab from '@/TabComponents/CST/cst-tab'
 import { useProgramOutput } from '@/contexts/ProgramOutputContext';
 import {useState} from 'react'
 
@@ -151,7 +152,7 @@ export default function Home({ layoutPercentages = [40, 60, 30] }) {
                 <pre>{programOutput['tkData']}</pre>
             </TabPanel>
             <TabPanel>
-              <pre>{programOutput['cstData']}</pre>
+              <CstTab/>
             </TabPanel>
             <TabPanel>
               <pre>{programOutput['stData']}</pre>

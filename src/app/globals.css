@@ -4,6 +4,7 @@
 
   @layer base {
     :root {
+      
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
 
@@ -78,4 +79,13 @@
   .react-tabs__tab-panel{
     overflow-y: auto;
     max-height: 100vh;
+  }
+
+  .cstNode{
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+  }
+
+  .react-flow__handle {
+    opacity: 0;
   }
