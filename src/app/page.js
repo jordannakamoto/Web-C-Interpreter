@@ -83,8 +83,8 @@ export default function Home({ layoutPercentages = [40, 60, 30] }) {
   // };
 
   return (
-      <main className="min-h-screen w-full  items-center justify-between  bg-white">
-        <PanelGroup direction="horizontal" style={{padding: '15px'}} className=" min-w-screen min-h-screen">
+      <main className="min-h-screen max-h-screen w-full  items-center justify-between  bg-white">
+        <PanelGroup direction="horizontal" style={{padding: '15px'}} className=" min-w-screen min-h-screen max-h-screen">
           <Panel defaultSize={layoutPercentages[0]} className="">
             <PanelGroup direction="vertical" className=" h-full " style={{position:'relative'}}>
               {/* TODO: Put in/out panel in its own component */}
@@ -148,7 +148,7 @@ export default function Home({ layoutPercentages = [40, 60, 30] }) {
                   />
             </TabPanel>
             <TabPanel>
-              <pre>{programOutput['tkData']}</pre>
+                <pre>{programOutput['tkData']}</pre>
             </TabPanel>
             <TabPanel>
               <pre>{programOutput['cstData']}</pre>
