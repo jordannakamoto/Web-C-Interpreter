@@ -1,4 +1,4 @@
-// api/getAllFiles.js
+// api/textarea-to-program-file
 /**--------------------------------------------
  *         TEXTAREA TO PROGRAM FILE                
  *---------------------------------------------**/
@@ -39,12 +39,4 @@ export async function POST(request) {
       { error: "Failed to write file from frontend" },
       { status: 500 }
       );
-}
-
-// Dummy Get Response
-export async function GET(request) {
-  return NextResponse.json(
-    { message: "get route at /textarea-to-program-file" },
-    { status: 200 }
-  );
 }
