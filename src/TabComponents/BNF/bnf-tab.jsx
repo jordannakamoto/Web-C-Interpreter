@@ -1,5 +1,5 @@
 // import PdfViewer from './pdfViewer';
-import './bnf.css';
+// import './bnf.css';
 
 export default function BnfTab() {
     const baseStyle = {

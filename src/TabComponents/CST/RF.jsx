@@ -6,10 +6,14 @@ import React, { useCallback, useEffect, useMemo } from 'react';
 import ReactFlow, { MarkerType, addEdge, useEdgesState, useNodesState } from 'reactflow';
 
 import BasicNode from './RFNode';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faExpand} from '@fortawesome/free-solid-svg-icons';
 import { useProgramOutput } from '@/contexts/ProgramOutputContext'; // Import your context hook
+import { useViewManager } from '@/contexts/ViewManagerContext';
 
 export default function RF() {
     const { programOutput } = useProgramOutput(); // Consume the context
+    const { setLayoutPercentages, layoutPercentages } = useViewManager(); 
     const nodeTypes = useMemo(() => ({ custom: BasicNode }), []);
     const [nodes, setNodes, onNodesChange] = useNodesState([]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -32,6 +36,14 @@ export default function RF() {
         return processedTokens;
     }
 
+    const  ToggleFullScreen = () => {
+        if(layoutPercentages[0] === 0) {
+            setLayoutPercentages([40, 60, 70, 30])
+        } else {
+        setLayoutPercentages([0, 100, 70, 30])
+        }
+    }
+
     // Dependency array includes programOutput to re-run when it changes
     useEffect(() => {
         const cstData = programOutput['cstData'];
@@ -39,8 +51,8 @@ export default function RF() {
         if (cstData) {
             // Splitting the string by spaces/newlines to get an array of tokens
 
-            let curr_x = 0;
-            let curr_y = 0;
+            let curr_x = 20;
+            let curr_y = 50;
             let xIncrement = 0;     // Horizontal space between nodes, determined by each tokenValue length
             const yIncrement = 40;  // Vertical space between lines
             const lines = cstData.split('\n'); // Split by newline to process each line
@@ -117,7 +129,11 @@ export default function RF() {
     }, [programOutput, setNodes]);
 
     return (
-        <div style={{ width: '100vw', height: '100vh' }}>
+        
+        <div style={{ width: '100vw', height: '100vh', position:'relative' }}>
+            <div style={{ position: 'absolute', top: -10, left: 0, width: '20px', zIndex: '5',height: '20px',padding: '10px' }}>
+                <button onClick={ToggleFullScreen}><FontAwesomeIcon icon={faExpand}/></button>
+            </div>
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
@@ -127,6 +143,7 @@ export default function RF() {
                 panOnScroll={true}
                 nodeTypes={nodeTypes}
             />
+            
         </div>
     );
 }

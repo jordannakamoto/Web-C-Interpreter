@@ -2,6 +2,7 @@ import "./globals.css";
 
 import { Inter } from "next/font/google";
 import { ProgramOutputProvider } from '@/contexts/ProgramOutputContext';
+import { ViewManagerProvider } from '@/contexts/ViewManagerContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"></link>
       </head>
       <ProgramOutputProvider>
-        <body className={inter.className}>{children}</body>
+        <ViewManagerProvider>
+          <body className={inter.className}>{children}</body>
+        </ViewManagerProvider>
       </ProgramOutputProvider>
     </html>
   );

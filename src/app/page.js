@@ -2,8 +2,9 @@
 
 import 'react-tabs/style/react-tabs.css';
 
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import { ImperativePanelGroupHandle, Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import {useEffect, useRef, useState} from 'react'
 
 import AboutTab from '@/TabComponents/About/about-tab'
 import BnfTab from '@/TabComponents/BNF/bnf-tab';
@@ -11,13 +12,31 @@ import { Button } from "@/ShadCN/ui/button"
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import CstTab from '@/TabComponents/CST/cst-tab'
 import { useProgramOutput } from '@/contexts/ProgramOutputContext';
-import {useState} from 'react'
+import { useViewManager } from '@/contexts/ViewManagerContext';
 
-export default function Home({ layoutPercentages = [40, 60, 30] }) {
+export default function Home() {
   const [code, setCode] = useState(``);
   const [outputcode, setOutputCode] = useState(``);
   const { setProgramOutput, programOutput } = useProgramOutput(); // Context Provider : contexts/ProgramOutputContext.js
+  const { setLayoutPercentages, layoutPercentages } = useViewManager(); // Context Provider : contexts/ViewManagerContext.js
 
+  const ref = useRef(null);
+  const ref_inner = useRef(null);
+
+  const resetLayout = () => {
+    const panelGroup = ref.current;
+    if (panelGroup) {
+      panelGroup.setLayout([layoutPercentages[0], layoutPercentages[1]]);
+    }
+    const panelGroup2 = ref_inner.current;
+    if (panelGroup2) {
+      panelGroup2.setLayout([layoutPercentages[2], layoutPercentages[3]]);
+    }
+  };
+
+  useEffect(() => {
+    resetLayout();
+  }, [layoutPercentages]);
 
   const runProgram = async () => {
     try {
@@ -86,9 +105,9 @@ export default function Home({ layoutPercentages = [40, 60, 30] }) {
 
   return (
       <main className="min-h-screen max-h-screen w-full  items-center justify-between  bg-white">
-        <PanelGroup direction="horizontal" style={{padding: '15px'}} className=" min-w-screen min-h-screen max-h-screen">
+        <PanelGroup ref={ref} direction="horizontal" style={{padding: '15px'}} className=" min-w-screen min-h-screen max-h-screen">
           <Panel defaultSize={layoutPercentages[0]} className="">
-            <PanelGroup direction="vertical" className=" h-full " style={{position:'relative'}}>
+            <PanelGroup ref={ref_inner} direction="vertical" className=" h-full " style={{position:'relative'}}>
               {/* TODO: Put in/out panel in its own component */}
               <Panel className=" bg-white" style={{overflowY: 'auto', backgroundColor: "#f5f5f5"}}>
                 {/* CodeMirror Editor */}

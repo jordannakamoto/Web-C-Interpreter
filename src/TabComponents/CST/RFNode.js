@@ -8,7 +8,7 @@ function BasicNode({ data }) {
       <Handle type="source" position={Position.Right} style={{left: '0'}} id="r" />
       
       {/* Bottom handle for outgoing vertical connections */}
-      <Handle type="source" position={Position.Bottom} style={{top: '0'}} id="b" />
+      <Handle type="source" position={Position.Bottom} style={{top: '0',left:'0',transform: 'translateX(12px)'}} id="b" />
 
       <div className="flex">
         <div className="mx-2">

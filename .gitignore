@@ -7,7 +7,6 @@
 .yarn/install-state.gz
 
 # dynamic
-/Program/tests/inputs/interface.c
 
 # testing
 /coverage
