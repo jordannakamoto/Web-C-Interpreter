@@ -106,7 +106,7 @@ export default function Home() {
   return (
       <main className="min-h-screen max-h-screen w-full  items-center justify-between  bg-white">
         <PanelGroup ref={ref} direction="horizontal" style={{padding: '15px'}} className=" min-w-screen min-h-screen max-h-screen">
-          <Panel defaultSize={layoutPercentages[0]} className="">
+          <Panel defaultSize={40} className="">
             <PanelGroup ref={ref_inner} direction="vertical" className=" h-full " style={{position:'relative'}}>
               {/* TODO: Put in/out panel in its own component */}
               <Panel className=" bg-white" style={{overflowY: 'auto', backgroundColor: "#f5f5f5"}}>
@@ -125,7 +125,7 @@ export default function Home() {
                 <Button onClick={runProgram} style={{position: 'absolute',right: '5px',bottom: '5px'}}>run</Button>
               </Panel>
               <PanelResizeHandle className="border-t" />
-              <Panel defaultSize={layoutPercentages[2]} style={{ backgroundColor: "#ededed"}}>
+              <Panel defaultSize={30} style={{ backgroundColor: "#ededed"}}>
                   <CodeEditor
                   value={outputcode}
                   language="c"
@@ -141,7 +141,7 @@ export default function Home() {
             </PanelGroup>
           </Panel>
           <PanelResizeHandle className="border-l" />
-          <Panel defaultSize={layoutPercentages[1]} className=" bg-white">
+          <Panel defaultSize={60} className=" bg-white">
           <Tabs>
             <TabList>
               <Tab>About</Tab>
