@@ -18,25 +18,25 @@ export async function GET(request) {
 
   // Read files asynchronously and return their contents in a promise
   const readFileContents = () => {
-    return new Promise((resolve, reject) => {
-      const fileContents = {};
-
-      files.forEach((filename, index) => {
+    const readOperations = files.map(filename => {
+      return new Promise((resolve, reject) => {
         const filePath = path.join(basePath, filename);
         fs.readFile(filePath, 'utf8', (err, content) => {
           if (err) {
             console.error(`Error reading file ${filename}:`, err);
-            fileContents[filename] = "Error reading file";
+            reject(new Error(`Error reading file ${filename}`)); // Reject the promise on error
           } else {
-            fileContents[filename] = content;
-          }
-          // Resolve the promise once all files have been processed
-          if (index === files.length - 1) {
-            resolve(fileContents);
+            resolve({ [filename]: content }); // Resolve each file's content as an object
           }
         });
       });
     });
+  
+    return Promise.all(readOperations)
+      .then(results => {
+        // Combine all results into a single object
+        return results.reduce((acc, result) => ({ ...acc, ...result }), {});
+      });
   };
 
   try {

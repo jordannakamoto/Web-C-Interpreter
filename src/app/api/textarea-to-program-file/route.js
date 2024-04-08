@@ -14,8 +14,7 @@ export const dynamic = 'force-dynamic';
 export async function POST(request) {
     const data = await request.json();
     const filePath = path.join(process.cwd(), 'Program/tests/inputs/interface.c');
-    console.log("Writing file from frontend to:", filePath);
-
+    // console.log("Writing file from frontend to:", filePath);
     const text = data.text;
 
     try {

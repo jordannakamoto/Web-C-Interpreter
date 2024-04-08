@@ -52,7 +52,7 @@ export default function Home() {
         throw new Error('Error processing files');
       }
       const postData = await postResponse.json();
-      console.log('FrontEnd to File processing successful', postData);
+      console.log('FrontEnd to File processing successful');
   
       // Running the C++ program
       const runResponse = await fetch('/api/run-program', {
