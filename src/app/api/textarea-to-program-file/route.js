@@ -9,6 +9,8 @@ import { NextResponse } from "next/server";
 import fs from 'fs';
 import path from 'path';
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request) {
     const data = await request.json()
     const filePath = path.join(process.cwd(),'Program/tests/inputs/interface.c');
