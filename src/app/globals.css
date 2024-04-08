@@ -74,6 +74,11 @@
     body {
       @apply bg-background text-foreground;
     }
+  }3
+
+  @font-face {
+    font-family: 'Source Code Pro';
+    src: url('/fonts/SourceCodePro-Regular.ttf.woff2') format('woff2'),
   }
 
   .react-tabs__tab-panel{
@@ -82,7 +87,7 @@
   }
 
   .cstNode{
-    font-family: "Space Mono", monospace;
+    font-family: "Source Code Pro", monospace;
     font-size: 12px;
   }
 
@@ -101,3 +106,4 @@
   .react-pdf__Page__annotations{
     margin: auto;
   }
+
