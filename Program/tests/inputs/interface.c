@@ -1,17 +1,16 @@
+
 // ***************************************************
-// * CS460: Programming Assignment 5: Test Program 5 *
+// * CS460: Programming Assignment 5: Test Program 3 *
 // ***************************************************
 
-
-
-// *******************************************************************************************
-// * The fizzbuzz procedure outputs one of the following responses:                          *
-// *                                                                                         *
-// * If counter is divisible by three without remainder, display "Fizz".                     *
-// * If counter is divisible by five without remainder, display "Buzz".                      *                
-// * If counter is divisible by both three and five without a remainder, display "Fizzbuzz". *
-// * If counter is NOT divisible by three or five, display the counter.                      *
-// *******************************************************************************************
+// *********************************************************************************
+// * The fizzbuzz procedure outputs one of the following responses:                *
+// *                                                                               *
+// * If counter is divisible by three without remainder, display "Fizz".           *
+// * If counter is divisible by five without remainder, display "Buzz".            *                
+// * If counter is divisible by both 3 and 5 w/out a remainder, display "Fizzbuzz".*
+// * If counter is NOT divisible by three or five, display the counter.            *
+// *********************************************************************************
 procedure fizzbuzz (int counter)
 {
   int state;
@@ -27,19 +26,19 @@ procedure fizzbuzz (int counter)
   }
   if (state == 1)
   {
-    printf ("Fizz");
+    printf ("Jordan");
   }
   else
   {
     if (state == 2)
     {
-      printf ("Buzz");
+      printf ("Brayan");
     }
     else
     {
       if (state == 4)
       {
-        printf ("Fizzbuzz");
+        printf ("JacobNick");
       }
       else
       {
@@ -48,9 +47,6 @@ procedure fizzbuzz (int counter)
     }
   }
 }
-
-
-
 
 
 procedure main (void)
@@ -72,5 +68,3 @@ procedure main (void)
     }
   }
 }
-
-

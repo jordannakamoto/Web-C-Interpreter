@@ -1,7 +1,9 @@
+// AST TAB
+
 import React from 'react'; // Ensure React is imported
 import ReactFlowGraph from './RF'
 
-export default function CstTab() {
+export default function AstTab() {
 
     const baseStyle = {
       };

@@ -7,6 +7,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import {useEffect, useRef, useState} from 'react'
 
 import AboutTab from '@/TabComponents/About/about-tab'
+import AstTab from '@/TabComponents/AST/cst-tab';
 import BnfTab from '@/TabComponents/BNF/bnf-tab';
 import { Button } from "@/ShadCN/ui/button"
 import CodeEditor from '@uiw/react-textarea-code-editor';
@@ -17,7 +18,8 @@ import { useViewManager } from '@/contexts/ViewManagerContext';
 export default function Home() {
   const [code, setCode] = useState(``);
   const [outputcode, setOutputCode] = useState(``);
-  const { setProgramOutput, programOutput } = useProgramOutput(); // Context Provider : contexts/ProgramOutputContext.js
+  
+  const { setProgramOutput, programOutput, programInput } = useProgramOutput(); // Context Provider : contexts/ProgramOutputContext.js
   const { setLayoutPercentages, layoutPercentages } = useViewManager(); // Context Provider : contexts/ViewManagerContext.js
 
   const ref = useRef(null);
@@ -37,6 +39,10 @@ export default function Home() {
   useEffect(() => {
     resetLayout();
   }, [layoutPercentages]);
+
+  useEffect(() => {
+    setCode(programInput);
+  }, [programInput])
 
   const runProgram = async () => {
     try {
@@ -86,6 +92,9 @@ export default function Home() {
         'tkData': outputData.files['interface-tokenlist_output_file.txt'],
         'cstData': outputData.files['interface-cst_output_file.txt'],
         'stData': outputData.files['interface-symboltable_output_file.txt'],
+        'astData': outputData.files['interface-ast_output_file.txt'],
+        'intData': outputData.files['interface-interpreter_output_file.txt'],
+        'errData': outputData.files['interface-error_output_file.txt'],
       }));
     } catch (error) {
       console.error('An error occurred:', error);
@@ -127,7 +136,7 @@ export default function Home() {
               <PanelResizeHandle className="border-t" />
               <Panel defaultSize={30} style={{ backgroundColor: "#ededed"}}>
                   <CodeEditor
-                  value={outputcode}
+                  value={programOutput['intData']}
                   language="c"
                   placeholder="output..."
                   onChange={(evn) => setCode(evn.target.value)}
@@ -178,7 +187,7 @@ export default function Home() {
             <pre style={{padding: '15px', marginBottom: '100px', fontSize:'12px'}}>{programOutput['stData']}</pre>
             </TabPanel>
             <TabPanel>
-            {/* {programOutput['astData']} */}
+              <AstTab/>
             </TabPanel>
             <TabPanel>
                     <BnfTab/>

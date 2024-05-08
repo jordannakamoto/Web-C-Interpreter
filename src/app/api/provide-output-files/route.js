@@ -14,6 +14,9 @@ export async function GET(request) {
     'interface-cst_output_file.txt',
     'interface-symboltable_output_file.txt',
     'interface-tokenlist_output_file.txt',
+    'interface-ast_output_file.txt',
+    'interface-interpreter_output_file.txt',
+    'interface-error_output_file.txt',
   ];
 
   // Read files asynchronously and return their contents in a promise

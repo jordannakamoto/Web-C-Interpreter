@@ -2,24 +2,28 @@
 // * CS460: Programming Assignment 6: Test Program 1 *
 // ***************************************************
 
-function int sum_of_first_n_squares (int n)
+int test1;
+
+function int foo (void)
 {
   int sum;
 
   sum = 0;
-  if (n >= 1)
-  {
-    sum = n * (n + 1) * (2 * n + 1) / 6;
-  }
-  return sum;
+  return test2;
 }
-  
+
+int test2;
+
 procedure main (void)
 {
   int n;
   int sum;
 
+  test2 = 5;
+  sum = foo();
+
   n = 100;
-  sum = sum_of_first_n_squares (n);
-  printf ("sum of the squares of the first %d numbers = %d\n", n, sum);
+  sum = 1;
 }
+
+int test3;

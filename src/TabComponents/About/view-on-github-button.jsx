@@ -17,6 +17,7 @@ const ViewOnGitHubButton = () => {
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
       fontWeight: '500',
       fontSize: '14px',
+      
     };
   
     return (
