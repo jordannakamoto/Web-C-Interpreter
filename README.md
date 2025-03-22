@@ -1,6 +1,6 @@
 # Simple C-Like Language Interpreter
 
-C++ Interpreter in /Program directory
+C++ Interpreter in /Program directory  \\
 NextJS Frontend in /src
 
 This project is an interpreter for a simplified C-like language, designed to explore the fundamentals of language parsing, interpretation, and execution in a controlled environment.
