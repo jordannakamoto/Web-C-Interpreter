@@ -1,6 +1,9 @@
 # Simple C-Like Language Interpreter
 
-This project is an interpreter for a simplified C-like language, designed to explore the fundamentals of language parsing, interpretation, and execution in a controlled environment. The interpreter is built with C++ and a file interface to NodeJS connects us to the React/NextJS front end.
+C++ Interpreter in /Program directory
+NextJS Frontend in /src
+
+This project is an interpreter for a simplified C-like language, designed to explore the fundamentals of language parsing, interpretation, and execution in a controlled environment.
 
 ## Features
 
